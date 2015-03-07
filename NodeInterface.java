@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.List;
@@ -7,7 +8,7 @@ public interface NodeInterface {
 	void start() throws UnknownHostException, SocketException;
 
 	// Join existing network
-	NodeInfo join(String IP);
+	void join(String IP) throws UnknownHostException, IOException;
 
 	// Process information
 	void processJoin();

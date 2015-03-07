@@ -93,12 +93,21 @@ public class Node implements NodeInterface {
 	/**
 	 * -Start node -Send connect request to node n -After connection call
 	 * furtherProcessing()
+	 * 
+	 * @throws IOException
+	 * @throws UnknownHostException
 	 */
 	@Override
-	public NodeInfo join(String IP) {
+	public void join(String IP) throws UnknownHostException, IOException {
 		// TODO Auto-generated method stub
 		Message m = new Message(this, 3);
-		return null;
+		// send join message to IP
+		clientSocket = new Socket(InetAddress.getByName(IP), listeningPort);
+		ObjectOutputStream outToServer = new ObjectOutputStream(
+				clientSocket.getOutputStream());
+		outToServer.writeObject(m);
+		outToServer.flush();
+		outToServer.close();
 	}
 
 	/**
