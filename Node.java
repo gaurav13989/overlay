@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Node implements NodeInterface {
+public class Node implements NodeInterface, Serializable {
 	InetAddress address; //
 	String hostAddress; //
 	int ID; //
