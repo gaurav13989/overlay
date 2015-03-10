@@ -70,7 +70,7 @@ public class Node implements NodeInterface {
 		try {
 			// initialize variables
 			System.out.println("Node(ID: " + ID + ", groupID: " + groupID
-					+ ") starting...");
+					+ ") starting... IP: " + address);
 			listenAndPoll(this);
 		} catch (Exception e) {
 			e.printStackTrace();
