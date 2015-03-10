@@ -377,13 +377,13 @@ public class Node implements NodeInterface {
 			System.out.println("0 - start node");
 			System.out.println("1 - join node");
 			System.out.println("99 - exit");
-			i = s.nextInt();
+			i = Integer.parseInt(s.nextLine());
 			if (i == 0) {
 				n.start();
 				break;
 			}
 			if (i == 1) {
-				System.out.print("Enter IP of new node to join: ");
+				System.out.println("Enter IP of new node to join: ");
 				String newIP = s.nextLine();
 				n.join(newIP);
 				break;
