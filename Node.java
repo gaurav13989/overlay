@@ -213,7 +213,9 @@ public class Node implements NodeInterface {
 						outToServer.writeObject(m);
 						outToServer.flush();
 					}
-				} catch (InterruptedException | IOException e) {
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
@@ -265,7 +267,9 @@ public class Node implements NodeInterface {
 					}
 					outToServer.flush();
 					outToServer.close();
-				} catch (ClassNotFoundException | IOException e) {
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
