@@ -26,7 +26,7 @@ public class Node implements NodeInterface, Serializable {
 	HashMap<Node, Integer> vacancies;
 	int pollingPort = 43124;
 	int listeningPort = 43125;
-	Socket clientSocket;
+	transient Socket clientSocket;
 	int status; // 1 - starting, 2 - started listening, 3 - started polling and
 				// ready
 	int latency; // milliseconds
