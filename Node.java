@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -319,7 +320,7 @@ public class Node implements NodeInterface {
 	 * @author Gaurav
 	 *
 	 */
-	class Message {
+	class Message implements Serializable {
 		int type; // poll
 		Node n;
 
