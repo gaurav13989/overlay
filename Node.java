@@ -234,6 +234,7 @@ public class Node implements NodeInterface {
 		Node n;
 
 		public Process(Socket clientSocket, Node n) throws IOException {
+			System.out.println("New process started..");
 			this.n = n;
 			outToServer = new ObjectOutputStream(clientSocket.getOutputStream());
 			inFromServer = new ObjectInputStream(clientSocket.getInputStream());
@@ -244,6 +245,7 @@ public class Node implements NodeInterface {
 		public void run() {
 			while (true) {
 				try {
+					System.out.println("reading message type..");
 					Message m = (Message) inFromServer.readObject();
 					if (m.type == 0) { // receive poll
 						System.out.println("Received poll from "
@@ -267,6 +269,7 @@ public class Node implements NodeInterface {
 					}
 					outToServer.flush();
 					outToServer.close();
+					System.out.println("processing done...");
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (IOException e) {
@@ -288,6 +291,8 @@ public class Node implements NodeInterface {
 		Node n;
 
 		public Listen(Node n) throws IOException {
+			System.out.println("Creating server socket to listen on port: "
+					+ listeningPort);
 			listen = new ServerSocket(listeningPort);
 			this.n = n;
 		}
@@ -297,7 +302,9 @@ public class Node implements NodeInterface {
 			// TODO Auto-generated method stub
 			while (true) {
 				try {
+					System.out.println("Listening...");
 					Socket clientRequest = listen.accept();
+					System.out.println("accepted request from client...");
 					new Thread(new Process(clientRequest, n)).start();
 				} catch (IOException e) {
 					e.printStackTrace();
